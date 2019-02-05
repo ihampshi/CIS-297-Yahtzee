@@ -1,0 +1,49 @@
+public class RoundsCounter
+    {
+
+        //The current round
+        int round;
+
+        //Constructor
+        public RoundsCounter()
+        {
+
+            //Initialize rounds to zero
+            round = 0;
+        }
+
+        //Increments the counter
+        public void increment()
+        {
+
+            //Increment rounds counter
+            round++;
+        }
+
+        //Returns whether the game is finished
+        public bool gameFinished()
+        {
+
+            //The result
+            bool result = false;
+
+            //If game finished
+            if (round >= 13)
+            {
+
+                //Set result
+                result = true;
+            }
+
+            //Return the result
+            return result;
+        }
+
+        //Resets the counter
+        public void reset()
+        {
+
+            //Reset counter
+            round = 0;
+        }
+    }
