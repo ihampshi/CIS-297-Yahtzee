@@ -12,7 +12,7 @@ namespace CIS_297_Yahtzee_Testing
         {
 
             //Arrange
-            int expectedResult = 1;
+            int expectedResult = 40;
             int result;
 
             int[] diceValues = new int[5] { 1, 2, 3, 4, 5 };
@@ -31,10 +31,10 @@ namespace CIS_297_Yahtzee_Testing
         {
 
             //Arrange
-            int expectedResult = 3;
+            int expectedResult = 40;
             int result;
 
-            int[] diceValues = new int[5] { 1, 1, 1, 4, 3 };
+            int[] diceValues = new int[5] { 2, 3, 4, 5, 6 };
             LargeStraightScorecardOption largeStraightScorecardOption = new LargeStraightScorecardOption();
 
 
@@ -53,7 +53,7 @@ namespace CIS_297_Yahtzee_Testing
             int expectedResult = 0;
             int result;
 
-            int[] diceValues = new int[5] { 2, 2, 4, 5, 3 };
+            int[] diceValues = new int[5] { 1, 2, 1, 1, 1 };
             LargeStraightScorecardOption largeStraightScorecardOption = new LargeStraightScorecardOption();
 
 
@@ -69,10 +69,10 @@ namespace CIS_297_Yahtzee_Testing
         {
 
             //Arrange
-            int expectedResult = 1;
+            int expectedResult = 0;
             int result;
 
-            int[] diceValues = new int[5] { 2, 3, 5, 2, 1 };
+            int[] diceValues = new int[5] { 6, 6, 5, 5, 4 };
             LargeStraightScorecardOption largeStraightScorecardOption = new LargeStraightScorecardOption();
 
 

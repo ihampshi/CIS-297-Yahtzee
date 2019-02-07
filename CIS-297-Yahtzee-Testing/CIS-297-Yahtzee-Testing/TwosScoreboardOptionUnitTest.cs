@@ -66,7 +66,7 @@ namespace CIS_297_Yahtzee_Testing
         {
 
             //Arrange
-            int expectedResult = 1;
+            int expectedResult = 8;
             int result;
 
             int[] diceValues = new int[5] { 2, 2, 2, 3, 2 };
