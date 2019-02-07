@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Resources;
 
 namespace Yahtzee_Application
 {
@@ -19,6 +20,13 @@ namespace Yahtzee_Application
 
         //The required numbered score to receive the bonus
         const int BONUS_THRESHOLD = 63;
+
+        //The images to display for each die value
+        Image[] diceImages;
+
+        //The picture boxes associated with each die
+        PictureBox[] dicePictureBoxes;
+
 
         //The player's scores for each category
         List<Score> scores;
@@ -39,9 +47,17 @@ namespace Yahtzee_Application
         {
             InitializeComponent();
 
+            //Pre-initialization
+            
+
+            diceImages = new System.Drawing.Image[6] { Properties.Resources.dice1, Properties.Resources.dice2, Properties.Resources.dice3, Properties.Resources.dice4, Properties.Resources.dice5, Properties.Resources.dice6, };
+            dicePictureBoxes = new PictureBox[5] { dicePictureBox1, dicePictureBox2, dicePictureBox3, dicePictureBox4, dicePictureBox5};
+
             //Game initialization
             initializeGame();
         }
+
+        //Game methods
 
         private void initializeGame()
         {
@@ -93,7 +109,7 @@ namespace Yahtzee_Application
             {
 
                 //Create a new die
-                Die die = new Die(random);
+                Die die = new Die(new RandomWrapper(random));
 
                 //Add to the index
                 dice.Add(die);
@@ -139,6 +155,13 @@ namespace Yahtzee_Application
                 //Reset the dice
                 dice[index].reset();
             }
+
+            //Reset the dice checkboxes
+            holdCheckBox1.CheckState = CheckState.Unchecked;
+            holdCheckBox2.CheckState = CheckState.Unchecked;
+            holdCheckBox3.CheckState = CheckState.Unchecked;
+            holdCheckBox4.CheckState = CheckState.Unchecked;
+            holdCheckBox5.CheckState = CheckState.Unchecked;
 
             //Update the scoreboard
             updateScoreboard();
@@ -473,6 +496,29 @@ namespace Yahtzee_Application
             }
         }
 
+        private void updateDiceDisplays()
+        {
+
+            //The value of each die
+            int value;
+
+            //For each die
+            for (int index = 0; index < dicePictureBoxes.Count(); index++)
+            {
+
+                //Get dice value
+                value = dice[index].getValue();
+
+                //If value is valid
+                if (value > 0 && value <= 6)
+                {
+
+                    //Apply image
+                    dicePictureBoxes[index].Image = diceImages[value - 1];
+                }
+            }
+        }
+
         private void roll()
         {
 
@@ -489,7 +535,10 @@ namespace Yahtzee_Application
 
             //Increment the roll counter
             rollsCounter.increment();
-            
+
+            //Update the dice displays
+            updateDiceDisplays();
+
             //Update the scoreboard
             updateScoreboard();
         }
@@ -529,7 +578,7 @@ namespace Yahtzee_Application
                 Score score = scores[index];
 
                 //If the current score option is locked
-                if (score.isLocked() == false)
+                if (score.isLocked())
                 {
 
                     //Add to the total
@@ -544,6 +593,9 @@ namespace Yahtzee_Application
 
                 //Mark bonus as achieved
                 bonusScore = true;
+
+                //Update bonus label
+                bonusLabel2.Text = BONUS_SCORE_AMOUNT.ToString();
             }
         }
 
@@ -697,7 +749,7 @@ namespace Yahtzee_Application
 
         private void changeDieHeld(object sender, int position)
         {
-
+            
             //Get the sending checkbox
             CheckBox checkBox = sender as CheckBox;
 
@@ -712,8 +764,18 @@ namespace Yahtzee_Application
                 isChecked = true;
             }
 
-            //Mark the associated die as held
-            dice[position].setHold(isChecked);
+            //If the dice have been rolled
+            if (rollsCounter.hasRolled())
+            {
+
+                //Mark the associated die as held
+                dice[position].setHold(isChecked);
+            } else
+            {
+
+                //Reset the checkbox
+                checkBox.CheckState = CheckState.Unchecked;
+            }
         }
 
         private void holdCheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -773,6 +835,7 @@ namespace Yahtzee_Application
         }
     }
 
+    //Score types enumerator
     public enum SCORE_ID
     {
         ONES = 0,
@@ -789,12 +852,68 @@ namespace Yahtzee_Application
         CHANCE = 11,
         YAHTZEE = 12
     };
+    
+    //Random number generator interface
+    public interface IRandom
+    {
 
+        //Get the next random number within a given range
+        int Next(int minInclusive, int maxExclusive);
+    }
+
+    //Random wrapper
+    public class RandomWrapper : IRandom
+    {
+
+        //The random number generator
+        Random random;
+
+        //Constructor
+        public RandomWrapper(Random random)
+        {
+
+            //Set member
+            this.random = random;
+        }
+
+        //Returns a legitimate psuedorandom number
+        public int Next(int minimum, int maximum)
+        {
+            //Return the result of the random class
+            return random.Next(minimum, maximum);
+        }
+    }
+
+    //Fake random number generator
+    public class FakeRandom : IRandom
+    {
+
+        //The number that this fake random number generator is set to return
+        int value;
+
+        //Constructor
+        public FakeRandom(int value)
+        {
+
+            //Set member
+            this.value = value;
+        }
+
+        //Returns the set number
+        public int Next(int minimum, int maximum)
+        {
+
+            //Return the set value
+            return value;
+        }
+    }
+
+    //A die
     public class Die
     {
 
         //The die's random number generator
-        Random random;
+        IRandom random;
 
         //The current value of the die
         int value;
@@ -803,7 +922,7 @@ namespace Yahtzee_Application
         bool held;
 
         //Constructor
-        public Die(Random random)
+        public Die(IRandom random)
         {
 
             //Initialize members
@@ -854,6 +973,7 @@ namespace Yahtzee_Application
         }
     }
 
+    //A score object
     public class Score
     {
 
@@ -982,6 +1102,7 @@ namespace Yahtzee_Application
         }
     }
 
+    //The rounds counter
     public class RoundsCounter
     {
 
@@ -1048,6 +1169,16 @@ namespace Yahtzee_Application
         public int getScore(int[] dice)
         {
 
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
+
             //The player's score if this is chosen
             int score = 0;
 
@@ -1076,6 +1207,16 @@ namespace Yahtzee_Application
         //Calculate the player's score from the dice values
         public int getScore(int[] dice)
         {
+
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
 
             //The player's score if this is chosen
             int score = 0;
@@ -1106,6 +1247,16 @@ namespace Yahtzee_Application
         public int getScore(int[] dice)
         {
 
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
+
             //The player's score if this is chosen
             int score = 0;
 
@@ -1134,6 +1285,16 @@ namespace Yahtzee_Application
         //Calculate the player's score from the dice values
         public int getScore(int[] dice)
         {
+
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
 
             //The player's score if this is chosen
             int score = 0;
@@ -1164,6 +1325,16 @@ namespace Yahtzee_Application
         public int getScore(int[] dice)
         {
 
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
+
             //The player's score if this is chosen
             int score = 0;
 
@@ -1193,6 +1364,16 @@ namespace Yahtzee_Application
         public int getScore(int[] dice)
         {
 
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
+
             //The player's score if this is chosen
             int score = 0;
 
@@ -1221,6 +1402,16 @@ namespace Yahtzee_Application
         //Calculate the player's score from the dice values
         public int getScore(int[] dice)
         {
+
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
 
             //The player's score if this is chosen
             int score = 0;
@@ -1280,6 +1471,16 @@ namespace Yahtzee_Application
         public int getScore(int[] dice)
         {
 
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
+
             //The player's score if this is chosen
             int score = 0;
 
@@ -1337,6 +1538,16 @@ namespace Yahtzee_Application
         //Calculate the player's score from the dice values
         public int getScore(int[] dice)
         {
+
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
 
             //The player's score if this option is chosen
             int score = 0;
@@ -1405,6 +1616,16 @@ namespace Yahtzee_Application
         //Calculate the player's score from the dice values
         public int getScore(int[] dice)
         {
+
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
 
             //The players score if this option is chosen
             int score = 0;
@@ -1480,6 +1701,16 @@ namespace Yahtzee_Application
         public int getScore(int[] dice)
         {
 
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
+
             //The players score if this option is chosen
             int score = 0;
 
@@ -1554,6 +1785,16 @@ namespace Yahtzee_Application
         public int getScore(int[] dice)
         {
 
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
+
             //The players score if this option is chosen
             int score = 0;
 
@@ -1577,6 +1818,16 @@ namespace Yahtzee_Application
         //Calculate the player's score from the dice values
         public int getScore(int[] dice)
         {
+
+            //Exit if any dice have invalid values
+            for (int index = 0; index < 5; index++)
+            {
+
+                if (dice[index] <= 0 || dice[index] > 6)
+                {
+                    return 0;
+                }
+            }
 
             //The players score if this option is chosen
             int score = 0;

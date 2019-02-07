@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dicePictureBox1 = new System.Windows.Forms.PictureBox();
             this.holdCheckBox1 = new System.Windows.Forms.CheckBox();
             this.holdCheckBox2 = new System.Windows.Forms.CheckBox();
@@ -96,9 +97,10 @@
             this.bonusLabel2 = new System.Windows.Forms.Label();
             this.bonusLabel1 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.gameFinishedLabel = new System.Windows.Forms.Label();
             this.finalScoreLabel2 = new System.Windows.Forms.Label();
             this.finalScoreLabel1 = new System.Windows.Forms.Label();
-            this.gameFinishedLabel = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dicePictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dicePictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dicePictureBox3)).BeginInit();
@@ -123,16 +125,19 @@
             // 
             // dicePictureBox1
             // 
+            this.dicePictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dicePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("dicePictureBox1.Image")));
             this.dicePictureBox1.Location = new System.Drawing.Point(258, 7);
             this.dicePictureBox1.Name = "dicePictureBox1";
             this.dicePictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.dicePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.dicePictureBox1.TabIndex = 0;
             this.dicePictureBox1.TabStop = false;
             // 
             // holdCheckBox1
             // 
             this.holdCheckBox1.AutoSize = true;
-            this.holdCheckBox1.Location = new System.Drawing.Point(291, 93);
+            this.holdCheckBox1.Location = new System.Drawing.Point(291, 94);
             this.holdCheckBox1.Name = "holdCheckBox1";
             this.holdCheckBox1.Size = new System.Drawing.Size(18, 17);
             this.holdCheckBox1.TabIndex = 1;
@@ -142,7 +147,7 @@
             // holdCheckBox2
             // 
             this.holdCheckBox2.AutoSize = true;
-            this.holdCheckBox2.Location = new System.Drawing.Point(377, 93);
+            this.holdCheckBox2.Location = new System.Drawing.Point(377, 94);
             this.holdCheckBox2.Name = "holdCheckBox2";
             this.holdCheckBox2.Size = new System.Drawing.Size(18, 17);
             this.holdCheckBox2.TabIndex = 3;
@@ -151,16 +156,18 @@
             // 
             // dicePictureBox2
             // 
+            this.dicePictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("dicePictureBox2.Image")));
             this.dicePictureBox2.Location = new System.Drawing.Point(344, 7);
             this.dicePictureBox2.Name = "dicePictureBox2";
             this.dicePictureBox2.Size = new System.Drawing.Size(80, 80);
+            this.dicePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.dicePictureBox2.TabIndex = 2;
             this.dicePictureBox2.TabStop = false;
             // 
             // holdCheckBox3
             // 
             this.holdCheckBox3.AutoSize = true;
-            this.holdCheckBox3.Location = new System.Drawing.Point(463, 93);
+            this.holdCheckBox3.Location = new System.Drawing.Point(463, 94);
             this.holdCheckBox3.Name = "holdCheckBox3";
             this.holdCheckBox3.Size = new System.Drawing.Size(18, 17);
             this.holdCheckBox3.TabIndex = 5;
@@ -169,16 +176,18 @@
             // 
             // dicePictureBox3
             // 
+            this.dicePictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("dicePictureBox3.Image")));
             this.dicePictureBox3.Location = new System.Drawing.Point(430, 7);
             this.dicePictureBox3.Name = "dicePictureBox3";
             this.dicePictureBox3.Size = new System.Drawing.Size(80, 80);
+            this.dicePictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.dicePictureBox3.TabIndex = 4;
             this.dicePictureBox3.TabStop = false;
             // 
             // holdCheckBox5
             // 
             this.holdCheckBox5.AutoSize = true;
-            this.holdCheckBox5.Location = new System.Drawing.Point(635, 93);
+            this.holdCheckBox5.Location = new System.Drawing.Point(635, 94);
             this.holdCheckBox5.Name = "holdCheckBox5";
             this.holdCheckBox5.Size = new System.Drawing.Size(18, 17);
             this.holdCheckBox5.TabIndex = 9;
@@ -187,16 +196,18 @@
             // 
             // dicePictureBox5
             // 
+            this.dicePictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("dicePictureBox5.Image")));
             this.dicePictureBox5.Location = new System.Drawing.Point(602, 7);
             this.dicePictureBox5.Name = "dicePictureBox5";
             this.dicePictureBox5.Size = new System.Drawing.Size(80, 80);
+            this.dicePictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.dicePictureBox5.TabIndex = 8;
             this.dicePictureBox5.TabStop = false;
             // 
             // holdCheckBox4
             // 
             this.holdCheckBox4.AutoSize = true;
-            this.holdCheckBox4.Location = new System.Drawing.Point(549, 93);
+            this.holdCheckBox4.Location = new System.Drawing.Point(549, 94);
             this.holdCheckBox4.Name = "holdCheckBox4";
             this.holdCheckBox4.Size = new System.Drawing.Size(18, 17);
             this.holdCheckBox4.TabIndex = 7;
@@ -205,9 +216,11 @@
             // 
             // dicePictureBox4
             // 
+            this.dicePictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("dicePictureBox4.Image")));
             this.dicePictureBox4.Location = new System.Drawing.Point(516, 7);
             this.dicePictureBox4.Name = "dicePictureBox4";
             this.dicePictureBox4.Size = new System.Drawing.Size(80, 80);
+            this.dicePictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.dicePictureBox4.TabIndex = 6;
             this.dicePictureBox4.TabStop = false;
             // 
@@ -224,7 +237,7 @@
             // holdLabel
             // 
             this.holdLabel.AutoSize = true;
-            this.holdLabel.Location = new System.Drawing.Point(244, 90);
+            this.holdLabel.Location = new System.Drawing.Point(244, 91);
             this.holdLabel.Name = "holdLabel";
             this.holdLabel.Size = new System.Drawing.Size(41, 17);
             this.holdLabel.TabIndex = 11;
@@ -263,7 +276,7 @@
             this.panel1.Controls.Add(this.onesButton);
             this.panel1.Controls.Add(this.onesLabel2);
             this.panel1.Controls.Add(this.onesLabel1);
-            this.panel1.Location = new System.Drawing.Point(8, 120);
+            this.panel1.Location = new System.Drawing.Point(8, 121);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 25);
             this.panel1.TabIndex = 15;
@@ -274,7 +287,7 @@
             this.panel2.Controls.Add(this.twosButton);
             this.panel2.Controls.Add(this.twosLabel2);
             this.panel2.Controls.Add(this.twosLabel1);
-            this.panel2.Location = new System.Drawing.Point(8, 144);
+            this.panel2.Location = new System.Drawing.Point(8, 145);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 25);
             this.panel2.TabIndex = 16;
@@ -312,7 +325,7 @@
             this.panel3.Controls.Add(this.threesButton);
             this.panel3.Controls.Add(this.threesLabel2);
             this.panel3.Controls.Add(this.threesLabel1);
-            this.panel3.Location = new System.Drawing.Point(8, 169);
+            this.panel3.Location = new System.Drawing.Point(8, 170);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(250, 25);
             this.panel3.TabIndex = 17;
@@ -464,7 +477,7 @@
             this.panel7.Controls.Add(this.chanceButton);
             this.panel7.Controls.Add(this.chanceLabel2);
             this.panel7.Controls.Add(this.chanceLabel1);
-            this.panel7.Location = new System.Drawing.Point(278, 244);
+            this.panel7.Location = new System.Drawing.Point(278, 243);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(250, 25);
             this.panel7.TabIndex = 26;
@@ -540,7 +553,7 @@
             this.panel9.Controls.Add(this.largeStraightButton);
             this.panel9.Controls.Add(this.largeStraightLabel2);
             this.panel9.Controls.Add(this.largeStraightLabel1);
-            this.panel9.Location = new System.Drawing.Point(278, 220);
+            this.panel9.Location = new System.Drawing.Point(278, 219);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(250, 25);
             this.panel9.TabIndex = 25;
@@ -654,7 +667,7 @@
             this.panel12.Controls.Add(this.threeOfAKindButton);
             this.panel12.Controls.Add(this.threeOfAKindLabel2);
             this.panel12.Controls.Add(this.threeOfAKindLabel1);
-            this.panel12.Location = new System.Drawing.Point(278, 121);
+            this.panel12.Location = new System.Drawing.Point(278, 122);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(250, 25);
             this.panel12.TabIndex = 21;
@@ -692,7 +705,7 @@
             this.panel13.Controls.Add(this.yahtzeeButton);
             this.panel13.Controls.Add(this.yahtzeeLabel2);
             this.panel13.Controls.Add(this.yahtzeeLabel1);
-            this.panel13.Location = new System.Drawing.Point(278, 269);
+            this.panel13.Location = new System.Drawing.Point(278, 267);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(250, 25);
             this.panel13.TabIndex = 27;
@@ -729,7 +742,7 @@
             this.panel14.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel14.Controls.Add(this.bonusLabel2);
             this.panel14.Controls.Add(this.bonusLabel1);
-            this.panel14.Location = new System.Drawing.Point(8, 268);
+            this.panel14.Location = new System.Drawing.Point(8, 267);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(250, 25);
             this.panel14.TabIndex = 21;
@@ -763,6 +776,17 @@
             this.panel15.Size = new System.Drawing.Size(200, 174);
             this.panel15.TabIndex = 16;
             // 
+            // gameFinishedLabel
+            // 
+            this.gameFinishedLabel.AutoSize = true;
+            this.gameFinishedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameFinishedLabel.Location = new System.Drawing.Point(40, 4);
+            this.gameFinishedLabel.Name = "gameFinishedLabel";
+            this.gameFinishedLabel.Size = new System.Drawing.Size(120, 17);
+            this.gameFinishedLabel.TabIndex = 28;
+            this.gameFinishedLabel.Text = "Game Finished!";
+            this.gameFinishedLabel.Visible = false;
+            // 
             // finalScoreLabel2
             // 
             this.finalScoreLabel2.AutoSize = true;
@@ -780,16 +804,13 @@
             this.finalScoreLabel1.TabIndex = 28;
             this.finalScoreLabel1.Text = "Final score:";
             // 
-            // gameFinishedLabel
+            // panel16
             // 
-            this.gameFinishedLabel.AutoSize = true;
-            this.gameFinishedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameFinishedLabel.Location = new System.Drawing.Point(40, 4);
-            this.gameFinishedLabel.Name = "gameFinishedLabel";
-            this.gameFinishedLabel.Size = new System.Drawing.Size(120, 17);
-            this.gameFinishedLabel.TabIndex = 28;
-            this.gameFinishedLabel.Text = "Game Finished!";
-            this.gameFinishedLabel.Visible = false;
+            this.panel16.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel16.Location = new System.Drawing.Point(256, 5);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(430, 85);
+            this.panel16.TabIndex = 28;
             // 
             // Form1
             // 
@@ -798,9 +819,14 @@
             this.ClientSize = new System.Drawing.Size(800, 309);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.panel14);
+            this.Controls.Add(this.dicePictureBox5);
+            this.Controls.Add(this.dicePictureBox1);
             this.Controls.Add(this.panel13);
+            this.Controls.Add(this.dicePictureBox2);
             this.Controls.Add(this.panel7);
+            this.Controls.Add(this.dicePictureBox3);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.dicePictureBox4);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel9);
@@ -814,15 +840,11 @@
             this.Controls.Add(this.holdLabel);
             this.Controls.Add(this.rollButton);
             this.Controls.Add(this.holdCheckBox5);
-            this.Controls.Add(this.dicePictureBox5);
             this.Controls.Add(this.holdCheckBox4);
-            this.Controls.Add(this.dicePictureBox4);
             this.Controls.Add(this.holdCheckBox3);
-            this.Controls.Add(this.dicePictureBox3);
             this.Controls.Add(this.holdCheckBox2);
-            this.Controls.Add(this.dicePictureBox2);
             this.Controls.Add(this.holdCheckBox1);
-            this.Controls.Add(this.dicePictureBox1);
+            this.Controls.Add(this.panel16);
             this.Name = "Form1";
             this.Text = "Yahtzee";
             ((System.ComponentModel.ISupportInitialize)(this.dicePictureBox1)).EndInit();
@@ -938,6 +960,7 @@
         private System.Windows.Forms.Label finalScoreLabel2;
         private System.Windows.Forms.Label finalScoreLabel1;
         private System.Windows.Forms.Label gameFinishedLabel;
+        private System.Windows.Forms.Panel panel16;
     }
 }
 
