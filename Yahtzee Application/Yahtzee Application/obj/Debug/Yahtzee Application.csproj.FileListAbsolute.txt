@@ -1,0 +1,10 @@
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\bin\Debug\Yahtzee Application.exe.config
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\bin\Debug\Yahtzee Application.exe
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\bin\Debug\Yahtzee Application.pdb
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\obj\Debug\Yahtzee Application.csprojResolveAssemblyReference.cache
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\obj\Debug\Yahtzee_Application.Properties.Resources.resources
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\obj\Debug\Yahtzee Application.csproj.GenerateResource.cache
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\obj\Debug\Yahtzee Application.csproj.CoreCompileInputs.cache
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\obj\Debug\Yahtzee Application.exe
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\obj\Debug\Yahtzee Application.pdb
+C:\Users\Isaac\Documents\GitHub\CIS-297-Yahtzee\Yahtzee Application\Yahtzee Application\obj\Debug\Yahtzee_Application.Form1.resources
